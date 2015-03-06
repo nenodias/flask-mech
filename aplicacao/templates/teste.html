@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+
+{% block title %}Início{% endblock %}
+{% block body %}
+		{% if name %}
+		<h1>Olá {{name}}!</h1>
+		{% else %}
+		<h1>Olá Mundo!!!</h1>
+		{% endif %}
+{% endblock %}

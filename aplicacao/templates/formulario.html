@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+
+{% block title %}Formulário{% endblock %}
+
+{% block body %}
+<a href="{{ url_for('hello//nome') }}">Home</a>
+		<form action="salvar.do" method="POST">
+			<label>Nome:<input name="nome" /></label>
+			<label>Telefone:<input name="telefone" /></label>
+			<button type="submit">Enviar</button>
+		</form>
+{% endblock %}

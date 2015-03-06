@@ -1,0 +1,6 @@
+flask
+sqlalchemy
+
+# Testar com esses caras depois
+#flask-sqlalchemy
+#flask-wtf
