@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}Bandas{% endblock %}
+{% block body %}
+	{% for banda in bandas %}
+    	Banda: {{banda.nome}} <br />
+    	{% for disco in banda.discos %}
+    		Disco: {{disco.nome}} <br />
+    		{% for musica in disco.musicas %}
+    			Musica:{{musica.nome}}<br />
+			{% endfor %}
+			<br />
+		{% endfor %}
+		<br />
+	{% endfor %}
+{% endblock %}

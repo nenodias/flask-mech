@@ -1,13 +1,13 @@
-<html>
-	<head>
-		<title>Título</title>
-	</head>
-	<body>
+{% extends "master.html" %}
+
+{% block title %}Marcação{% endblock %}
+
+{% block body %}
 		{{texto1}}
 		<br />
 		{{texto2}}
 		<br />
 		{{texto3}}
 		<br />
-	</body>
-</html>
+		{{ola}}
+{% endblock %}

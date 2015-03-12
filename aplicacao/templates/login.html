@@ -1,0 +1,32 @@
+<!-- extend from base layout -->
+{% extends "master.html" %}
+
+{% block body %}
+<h1>Sign In</h1>
+<form action="" method="post" name="login">
+    {{ form.hidden_tag() }}
+    <p>
+        Login:<br>
+        {{ form.login(size=80) }}
+        {% for error in form.login.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+        Senha:<br>
+        {{ form.password(size=80) }}
+        {% for error in form.password.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+        Confirmação:<br>
+        {{ form.confirm(size=80) }}
+        {% for error in form.confirm.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>{{ form.remember_me }} Remember Me</p>
+    <p><input type="submit" value="Sign In"></p>
+</form>
+{% endblock %}

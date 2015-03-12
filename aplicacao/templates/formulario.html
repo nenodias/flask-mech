@@ -3,7 +3,7 @@
 {% block title %}Formulário{% endblock %}
 
 {% block body %}
-<a href="{{ url_for('hello//nome') }}">Home</a>
+<a href="{{ url_for('hello_world', name="Nome" ) }}">Home</a>
 		<form action="salvar.do" method="POST">
 			<label>Nome:<input name="nome" /></label>
 			<label>Telefone:<input name="telefone" /></label>
