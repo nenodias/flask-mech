@@ -40,7 +40,7 @@ def buscar_por_hash(codigo_hash):
     return db_session.query(Usuario).filter(Usuario.cookie == codigo_hash).first()
 
 def buscar_usuario_logado(login, senha):
-    from aplicacao.controllers import app
+    from aplicacao.applicacao import app
     usuario_logado = db_session.query(Usuario).filter(Usuario.login == login).first()
     app.logger.info(login+"\n"+senha)
     app.logger.info(usuario_logado)

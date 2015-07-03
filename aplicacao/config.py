@@ -7,9 +7,12 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///banco.db"
 def settingEmail(app):
     from flask_mail import Mail
     # After 'Create app'
-    app.config['MAIL_SERVER'] = 'smtp.example.com'
-    app.config['MAIL_PORT'] = 465
-    app.config['MAIL_USE_SSL'] = True
-    app.config['MAIL_USERNAME'] = 'username'
-    app.config['MAIL_PASSWORD'] = 'password'
+    app.config.update(
+    #EMAIL SETTINGS
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=465,
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME = 'email@gmail.com',
+    MAIL_PASSWORD = 'senhadoemail',
+    )
     return Mail(app)

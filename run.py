@@ -16,10 +16,12 @@ pybabel compile -d translations
 
 
 '''
-from aplicacao import controllers
+import os
+from aplicacao.applicacao import app
 from aplicacao.database import init_db
 
 init_db()
 
 if __name__ == '__main__':
-    controllers.run()
+	port = int(os.environ.get("PORT", 8000))
+	app.run(debug=True, host='0.0.0.0', port = port)
