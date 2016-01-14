@@ -1,0 +1,94 @@
+{% extends "nocaute/nocaute_master.html" %}
+{% block title %}Tabela Macorrati{% endblock %}
+{% block body %}
+<table class="list" cellpadding="5" cellspacing="1">
+	<thead>
+		<tr class="head">
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: Contatos">
+		<tr class="row" data-bind="css: { editing: isEditing }">
+			<td class="boldtext">
+				<span data-bind="text:NomeCompleto"></span>
+			</td>
+			<td><span data-bind="text: Contato"></span></td>
+			<td><a href="#" data-bind="click: $parent.removerContato">Deletar</a>
+				<a href="#" data-bind="click: editarContato">Editar</a></td>
+		</tr>
+		<tr class="row" data-bind="visible: isEditing">
+			<td>
+				Nome:<input data-bind="value: Nome" /> 
+				SobreNome:<input data-bind="value: Sobrenome" />
+			</td>
+			<td><input data-bind="value: Contato" /></td>
+			<td><a href="#" data-bind="click: atualizarContato">Concluído</a>
+			</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<form data-bind="submit: adicionarContato">
+			<tr class="row">
+				<td>Nome:<input data-bind="value: Nome" /> SobreNome:<input
+					data-bind="value: Sobrenome" />
+				</td>
+				<td><input data-bind="value: Contato" /></td>
+				<td><input type="submit" value="Adicionar" /></td>
+			</tr>
+		</form>
+	</tfoot>
+</table>
+<script type="text/javascript">
+			function _contato(Nome, Sobrenome, Contato) {
+				this.Nome = ko.observable(Nome);
+				this.Sobrenome = ko.observable(Sobrenome);
+				this.NomeCompleto = ko.computed(function() {
+					return this.Nome() + ' ' + this.Sobrenome();
+				}, this);
+
+				this.Contato = ko.observable(Contato);
+
+				this.isEditing = ko.observable(false);
+
+				this.editarContato = function(event) {
+					this.isEditing(true);
+				}
+
+				this.atualizarContato = function(task) {
+					this.isEditing(false);
+				}
+			}
+
+			var viewModel = function() {
+				self = this;
+				var listaContatos = [
+						new _contato("Jose Carlos", "Macoratti", "99850-9652"),
+						new _contato("Janice", "Lima", "8850-0011"),
+						new _contato("Jefferson", "Bueno", "7850-9080") ];
+				self.Nome = ko.observable();
+				self.Sobrenome = ko.observable();
+				self.Contato = ko.observable();
+				self.Contatos = ko.observableArray(listaContatos);
+
+				// remove contato
+
+				self.removerContato = function(_contato) {
+					self.Contatos.remove(_contato)
+				}
+
+				//inclui contato
+				self.adicionarContato = function() {
+					var con = new _contato(self.Nome(), self.Sobrenome(), self
+							.Contato())
+					self.Contatos.push(con);
+					self.Nome("");
+					self.Sobrenome("");
+					self.Contato("");
+				};
+			}
+
+			ko.applyBindings(new viewModel());
+		</script>
+{% endblock %}

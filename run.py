@@ -23,5 +23,5 @@ from aplicacao.database import init_db
 init_db()
 
 if __name__ == '__main__':
-	port = int(os.environ.get("PORT", 8000))
+	port = int(os.environ.get("PORT", 8001))
 	app.run(debug=True, host='0.0.0.0', port = port)
