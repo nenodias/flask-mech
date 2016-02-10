@@ -207,9 +207,9 @@ def run():
     
     bandas = db_session.query(Banda).all()
     for b in bandas:
-        print "Banda: " , b.nome
+        print("Banda: " , b.nome)
         for d in b.discos:
-            print "  Disco: ", d.nome
+            print("  Disco: ", d.nome)
             for m in d.musicas:
                 if m.banda.id == b.id:
-                    print "    Música: ", m.nome
+                    print("    Música: ", m.nome)
